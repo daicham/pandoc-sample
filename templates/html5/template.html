@@ -3,41 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-$for(author-meta)$
+  $for(author-meta)$
   <meta name="author" content="$author-meta$">
-$endfor$
-$if(date-meta)$
+  $endfor$
+  $if(date-meta)$
   <meta name="dcterms.date" content="$date-meta$">
-$endif$
-$if(keywords)$
+  $endif$
+  $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
-$endif$
+  $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
   <style type="text/css">code{white-space: pre;}</style>
-$if(quotes)$
+  $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
-$endif$
-$if(highlighting-css)$
+  $endif$
+  $if(highlighting-css)$
   <style type="text/css">
-$highlighting-css$
+  $highlighting-css$
   </style>
-$endif$
-$for(css)$
+  $endif$
+  $for(css)$
   <link rel="stylesheet" href="$css$">
-$endfor$
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-$if(math)$
-  $math$
-$endif$
+  $endfor$
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-toc.min.css">
+  $if(math)$
+    $math$
+  $endif$
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-$for(header-includes)$
-  $header-includes$
-$endfor$
+  $for(header-includes)$
+    $header-includes$
+  $endfor$
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
+<div class="container-fluid">
+<div class="row">
 $for(include-before)$
 $include-before$
 $endfor$
@@ -55,16 +59,23 @@ $if(date)$
 $endif$
 </header>
 $endif$
-$if(toc)$
-<nav id="$idprefix$TOC">
-$toc$
-</nav>
-$endif$
-$body$
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <nav id="toc" class="affix" data-spy="affix" data-toggle="toc"></nav>
+  </div>
+  <div class="col-md-10">
+    $body$
+  </div>
+</div>
+<div class="row">
 $for(include-after)$
 $include-after$
 $endfor$
+</div>
+</div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-toc.min.js"></script>
 </body>
 </html>
